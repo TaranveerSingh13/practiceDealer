@@ -75,8 +75,50 @@ http://maven.apache.org/maven-v4_0_0.xsd">
   </dependencies>
 
 
+
     <build>
-        <finalName>trunk</finalName>
+        <finalName>mycareer/finalName</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.3</version>
+                    <configuration>
+                        <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                        <archive>
+                            <manifestEntries>
+                                <Dependencies>org.jboss.ironjacamar.jdbcadapters,com.oracle.ojdbc6</Dependencies>
+                            </manifestEntries>
+                        </archive>
+                        <webResources>
+                            <resource>
+                                <!-- this is relative to the pom.xml directory -->
+                                <directory>${basedir}/src/main/web/</directory>
+                                <targetPath>/portalStatic/</targetPath>
+                                <!-- the list has a default value of ** -->
+                                <!-- <includes> -->
+                                <!-- <include>image2/*.jpg</include> -->
+                                <!-- </includes> -->
+                                <!-- there's no default value for this -->
+                                <includes>
+                                    <include>css/**</include>
+                                    <include>Common Utility/**</include>
+                                    <include>Controllers/**</include>
+                                    <include>views/**</include>
+                                    <include>images/**</include>
+                                    <include>services/**</include>
+                                </includes>
+                                <!-- <excludes> -->
+                                <!-- <exclude>js/extjs/**</exclude> -->
+                                <!-- </excludes> -->
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
-	  
+
+
 </project>  
