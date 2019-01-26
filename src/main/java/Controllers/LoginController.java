@@ -1,6 +1,7 @@
 package Controllers;
 
 
+import Services.Implementations.LoginServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,13 +16,13 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public
-    @ResponseBody
-    void download(
+    String login(
                   HttpServletResponse response,
                   HttpServletRequest request) {
-        System.out.print("Welcome");
+        LoginServiceImpl.setIsAuthenticated("true");
+        return "redirect:/";
 
     }
 

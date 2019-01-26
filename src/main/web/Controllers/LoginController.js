@@ -1,10 +1,9 @@
-app.controller('LoginCtrl',function($scope,sendRequest) {
+var app = angular.module('makemycareer');
+app.controller('LoginCtrl',function($scope, $state) {
   var vm = $scope;
+  vm.SubmitLogin = function(){
+      $state.go("about");
+  }
 
 vm.url = 'taran';
-  vm.SubmitLogin = function(isValidated){
-      if(isValidated){
-          sendRequest.sendAjax(vm);
-      }
-  }
 });
